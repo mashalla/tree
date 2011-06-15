@@ -1,0 +1,11 @@
+name: Accessible Tree
+author: mashalla
+category: Widgets
+tags: [tree, root, child, expand, collapse, data, structure]
+#docs: http://ascribedata.com/moo/dialog/
+demo: http://mashalla.github.com/tree
+current: 1.0
+
+sources:
+  - "Source/tree.js"
+  - "Source/demo.js"
