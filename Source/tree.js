@@ -4,20 +4,22 @@ name: Accessible Tree
 
 description: Provides an accessible tree that can extended and collapse its subtrees via keyboard interaction
 
-License: MIT
+license: MIT
 
-Version: 1.0
+version: 1.0
 
 authors:
 	- Christian Merz
 	- Christoph Pojer
-Dependencies:
+
+dependencies:
 	- Core/1.2.3: *
 	- More/1.2.4.1: Drag 
 	- More/1.2.4.1: Drag.Move
 	- More/1.2.4.1: Element.Delegation
 
-provides: Tree
+provides: accessible tree
+
 ...
 */
 
