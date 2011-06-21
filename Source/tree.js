@@ -1,33 +1,27 @@
-// --- extended ----------- Start Edit --------------------------------
-//
-// last edit: 2011 - 03 - 23
-//
-// author: Christian Merz
-//
-// this script is a modified and extendend version of Collapse.js of
-// Christoph Pojer (all changes are necessary for accessibility):
 /*
- Script: Collapse.js
- MooTools Tree Components
- License:
- MIT-style license.
- Version:
- 1.0
- Copyright:
- Copyright (c) 2009 [Christoph Pojer](http://cpojer.net).
- Dependencies:
- - MooTools Core 1.2.3 or newer
- - MooTools More 1.2.4.1 or newer: Drag.js, Drag.Move.js, Element.Delegation.js
- - When using MooTools More 1.2.3.x: Add "Delegation.js" as provided in the Demos/ Folder of the Tree Components
- Options:
- - animate: (boolean, defaults to *true*) Whether to animate the expand/collapse elements or not
- - fadeOpacity: (number, defaults to *0.5*) The opacity to be used for expand/collapse elements when they are not currently hovered
- - selector: (string, defaults to *a.expand*) The selector to be used to determine the expand/collapse elements
- - listSelector: (string, defaults to *li*) The element which contains elements determined by the *selector* and *childSelector* options
- - childSelector: (string, defaults to *ul*) The selector for the elements that are to be collapsed and expanded
- */
-//
-// --- extended ----------- Start Edit --------------------------------
+---
+name: Accessible Tree
+
+description: accessible tree
+
+license: MIT
+
+version: 1.0
+
+authors:
+ - Christian Merz
+ - Christoph Pojer
+
+requires:
+ - Core/1.2.3: *
+ - More/1.2.4.1: Drag 
+ - More/1.2.4.1: Drag.Move
+ - More/1.2.4.1: Element.Delegation
+
+provides: [Tree]
+
+...
+*/
 
 
 
