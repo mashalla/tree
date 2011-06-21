@@ -1,27 +1,35 @@
+// --- extended ----------- Start Edit --------------------------------
+//
+// last edit: 2011 - 03 - 23
+//
+// author: Christian Merz
+//
+// this script is a modified and extendend version of Collapse.js of
+// Christoph Pojer (all changes are necessary for accessibility):
 /*
----
-name: Accessible Tree
+ Script: Collapse.js
+ MooTools Tree Components
+ License:
+ MIT-style license.
+ Version:
+ 1.0
+ Copyright:
+ Copyright (c) 2009 [Christoph Pojer](http://cpojer.net).
+ Dependencies:
+ - MooTools Core 1.2.3 or newer
+ - MooTools More 1.2.4.1 or newer: Drag.js, Drag.Move.js, Element.Delegation.js
+ - When using MooTools More 1.2.3.x: Add "Delegation.js" as provided in the Demos/ Folder of the Tree Components
+ Options:
+ - animate: (boolean, defaults to *true*) Whether to animate the expand/collapse elements or not
+ - fadeOpacity: (number, defaults to *0.5*) The opacity to be used for expand/collapse elements when they are not currently hovered
+ - selector: (string, defaults to *a.expand*) The selector to be used to determine the expand/collapse elements
+ - listSelector: (string, defaults to *li*) The element which contains elements determined by the *selector* and *childSelector* options
+ - childSelector: (string, defaults to *ul*) The selector for the elements that are to be collapsed and expanded
+ */
+//
+// --- extended ----------- Start Edit --------------------------------
 
-description: Provides an accessible tree that can extended and collapse its subtrees via keyboard interaction
 
-license: MIT
-
-version: 1.0
-
-authors:
- - Christian Merz
- - Christoph Pojer
-
-requires:
- - Core/1.2.3: *
- - More/1.2.4.1: Drag 
- - More/1.2.4.1: Drag.Move
- - More/1.2.4.1: Element.Delegation
-
-provides: [Tree]
-
-...
-*/
 
 (function(){
 
@@ -39,6 +47,7 @@ provides: [Tree]
         },
         
         initialize: function(element, options){
+            this.singleton = true;
             this.setOptions(options);
             this.element = $(element);
             this.treeitems = new Array();
@@ -52,32 +61,30 @@ provides: [Tree]
                 this.treeitems[i][4] = false; //selected    
             }
             var self = this;
-			this.element.setProperty('role', 'tree');
+            //IOS cant read images inside the role tree
+            if (Browser.Platform.name != "ios") 
+                this.element.setProperty('role', 'tree');
             this.element.getElements(self.options.childSelector).each(function(el){
-             el.setProperty('role', 'group');
-             var dlidiv = new Element('div', {
-             'class': 'lineDiv'
-             }).inject(el, 'top');
-             var dli = new Element('div', {
-             'class': 'lineV'
-             }).inject(dlidiv);
-             });
+                el.setProperty('role', 'group');
+                var dlidiv = new Element('div', {
+                    'class': 'lineDiv'
+                }).inject(el, 'top');
+                var dli = new Element('div', {
+                    'class': 'lineV'
+                }).inject(dlidiv);
+            });
             this.element.getElements(self.options.listSelector).each(function(el){
-                 var aex = new Element('a', {
-                 'class': 'expand',
-                 'href': '#',
-                 'title': "Expand/Collapse"
-                 }).inject(el, 'top');
                 var imgex = new Element('img', {
                     'class': 'expand',
                     'src': "img/Expand.png",
-                    'alt': "ExpandCollapse"
+                    'alt': "ExpandCollapse",
+                    'aria-label': "expand collapse " + el.getElement('span').get('text')
                 }).inject(el, 'top');
-
-			    var dli = new Element('div', {
-                 'class': 'lineH'
-                 }).inject(el, 'bottom');
-
+                
+                var dli = new Element('div', {
+                    'class': 'lineH'
+                }).inject(el, 'bottom');
+                
                 el.setProperty('role', 'presentation');
                 el.getElement('span').setProperties({
                     'role': 'treeitem',
@@ -93,11 +100,11 @@ provides: [Tree]
                         self.collapse(el);
                 }
             });
-             /* Currently not in use because voiceOver makes faults
-            this.element.getElements(self.options.selector).each(function(el){
-                el.setProperty('role', 'presentation');
-            });
-   			 */     
+            /* Currently not in use because voiceOver makes faults
+             this.element.getElements(self.options.selector).each(function(el){
+             el.setProperty('role', 'presentation');
+             });
+             */
             this.element.getElements(self.options.textSelector).each(function(el){
                 el.setProperty('tabindex', -1);
             });
@@ -166,9 +173,13 @@ provides: [Tree]
             }
             this.element.getElement(self.options.textSelector).addEvents({
                 focus: function(e){
-                    self.toggleSelection(self.element.getElement(self.options.textSelector), e);
-                    self.toggleFocus(self.element.getElement(self.options.textSelector), e);
+                    if (this.singleton) {
+                        this.singleton = false
+                        self.toggleSelection(self.element.getElement(self.options.textSelector), e);
+                        self.toggleFocus(self.element.getElement(self.options.textSelector), e);
+                    }
                 }
+.bind(this)
             });
             this.element.addEvents({
                 'keydown': function(e){
@@ -205,14 +216,19 @@ provides: [Tree]
                                 if (e.key == 'left' && !e.shift && !e.control) {
                                     e.stop();
                                     if (self.hasChildren(el.getParent())) {
-                                        if (self.isCollapsed(el.getParent().getElement(self.options.childSelector))) {
-                                            self.getPrevElement(el).focus();
-                                            self.toggleSelection(self.getPrevElement(el), e);
-                                            self.toggleFocus(self.getPrevElement(el), e);
-                                        }
-                                        else {
+                                        if (!self.isCollapsed(el.getParent().getElement(self.options.childSelector))) {
                                             self.collapse(el.getParent());
                                         }
+                                        else {
+                                            self.getParentElement(el).focus();
+                                            self.toggleSelection(self.getParentElement(el), e);
+                                            self.toggleFocus(self.getParentElement(el), e);
+                                        }
+                                    }
+                                    else {
+                                        self.getParentElement(el).focus();
+                                        self.toggleSelection(self.getParentElement(el), e);
+                                        self.toggleFocus(self.getParentElement(el), e);
                                     }
                                 }
                                 else 
@@ -469,6 +485,15 @@ provides: [Tree]
             }
             return element;
         },
+        
+        getParentElement: function(element){
+            var parent = element.getParent('ul').getPrevious('span');
+            if (parent) {
+                return parent;
+            }
+            return element;
+        },
+        
         
         getFirstElement: function(element){
             return this.treeitems[0][0];
