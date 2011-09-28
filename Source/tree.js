@@ -43,7 +43,7 @@ provides: [Tree]
         initialize: function(element, options){
             this.singleton = true;
             this.setOptions(options);
-            this.element = $(element);
+            this.element = document.id(element);
             this.treeitems = new Array();
             var tmp = this.element.getElements(this.options.textSelector);
             for (var i = 0; i < tmp.length; i++) {
