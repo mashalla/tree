@@ -5,7 +5,7 @@ This plugin creates a tree of a nested html list with subtrees that can be exten
 
 Widget based on <a href="http://mootools.net/forge/p/mootools_tree_components">Tree</a> by Christoph Pojer!
 
-![Screenshot](http://www.accessiblemootoolsdemo.iao.fraunhofer.de/Mootools_Widgets/img/Tree.png)
+![Screenshot](http://www.accessiblemootoolsdemo.iao.fraunhofer.de/Mootools_Widgets/WidgetThumbs/Tree.png)
 
 How to use
 ----------
