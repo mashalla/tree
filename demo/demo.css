@@ -1,0 +1,171 @@
+/* common settings 314 */
+
+body {
+	font-family: "Arial";
+	font-size: 0.8em;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	background-image: url(img/background.gif);
+	background-repeat: repeat-x;
+	padding: 10px;
+}
+hr {
+	border: 0px solid #aaaaaa;
+	background-color: #aaaaaa;
+	height: 1px;
+}
+a:link {
+	color: #cc0000;
+	text-decoration: none;
+}
+a:visited {
+	color: #cc0000;
+	text-decoration: none;
+}
+a:focus {
+	color: #cc0000;
+	text-decoration: none;
+}
+a:hover {
+	color: #cc0000;
+	text-decoration: underline;
+}
+a:active {
+	color: #cc0000;
+	text-decoration: none;
+}
+h1 {
+	color: #111111;
+	font-size: 2em;
+	font-weight: normal;
+	letter-spacing: 1px;
+	margin: 10px 0;
+	padding: 0;
+}
+h2 {
+	color: #111111;
+	font-size: 1.6em;
+	font-weight: normal;
+	letter-spacing: 1px;
+	margin: 10px 0;
+	padding: 0;
+}
+h3 {
+	color: #333333;
+}
+.youtube {
+	border: 1px solid #aaaaaa;
+	-moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+div.sa_demo_contentScreen {
+	background-color: #ffffff;
+	margin: 0 5px 1em 0;
+	padding: 0px 8px 8px 40px;
+	margin: 10px 40px 40px 5px;
+	width: 580px;
+}
+div.sa_demo_headerScreen {
+	border: #e6e6e6 2px double;
+	background-color: #ffffff;
+	padding: 10px 10px 0px 10px;
+	height: 60px;
+	margin: 70px 0 0px 0;
+	width: 580px;
+}
+/* end common settings 314 */
+
+ul {
+	padding: 0 0 0 15px;
+}
+ul.tree {
+	margin: 0;
+	padding: 0 0 0 0px;
+}
+ul.tree li {
+	position: relative;
+	list-style-type: none;
+	padding: 0;
+	line-height: 25px;
+	margin: 3px 0;
+	background: none;
+}
+ul.tree span {
+	font-size: 12px;
+	font-family: arial, sans-serif;
+	cursor: pointer;
+	color: #5e5e5e;
+	text-decoration: none;
+	padding: 3px 6px 3px 6px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;
+}
+ul.tree span.selected {
+	background-color: #efefef;
+}
+ul.tree span:focus {
+	outline: none;
+	border: 2px dotted #cc0000;
+	margin: -2px -2px -2px -2px;
+}
+ul.tree img.expand {
+	cursor: pointer;
+	outline: 0;
+	float: left;
+	display: block;
+	padding-top: 2px;
+	margin: 0;
+	margin-top: 4px;
+	margin-right: 8px;
+}
+ul.tree a.expand:link {
+	color: #ffff00;
+}
+ul.tree a.expand:visited {
+	color: #ffff00;
+}
+ul.tree a.expand:active {
+	color: #ffff00;
+}
+ul.tree div.lineH {
+	position: absolute;
+	top: 0px;
+	left: 15px;
+	border-bottom: 1px dashed #cccccc;
+	width: 9px;
+	height: 13px;
+}
+ul.tree div.lineDiv {
+	position: absolute;
+	top: -11px;
+	left: 30px;
+	overflow: hidden;
+	width: 1px;
+	height: 100%;
+}
+ul.tree div.lineV {
+	position: absolute;
+	top: 33px;
+	left: 0;
+	border-left: 1px dashed #cccccc;
+	width: 9px;
+	height: 100%;
+}
+h1 {
+	margin: 10px 0;
+	padding: 0;
+	color: #111;
+	font-weight: normal;
+	font-size: 24px;
+	letter-spacing: 1px;
+}
+h1 span {
+	font-size: 11px;
+	letter-spacing: 0;
+	word-spacing: 0;
+}
+.blue {
+	color: #1f52b0;
+}
