@@ -4,7 +4,7 @@ category: Widgets
 tags: [tree, root, child, expand, collapse, data, structure]
 #docs: http://www.accessiblemootoolsdemo.iao.fraunhofer.de/Mootools_Widgets/index.html
 demo: http://www.accessiblemootoolsdemo.iao.fraunhofer.de/Mootools_Widgets/index.html
-current: 1.1
+current: 1.2
 
 sources:
   - "Source/tree.js"
